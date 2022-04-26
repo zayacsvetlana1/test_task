@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { useSelector} from "react-redux";
 import {fetchUsers} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
+import UserItem from "./UserItem";
 
 const UserList = () => {
 	const {users, error, loading} = useSelector(state => state.user)
@@ -21,11 +22,12 @@ const UserList = () => {
 
 	console.log(users)
 	return (
-		<div>
+		<div className='d-flex flex-row '>
 			{users.map(user=>
-				<div key={user.id}>
-					{user.first_name}
-				</div>
+				<UserItem
+					key={user.id}
+					user={user}
+				/>
 			)}
 		</div>
 	);

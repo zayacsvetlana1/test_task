@@ -1,10 +1,11 @@
 import UserList from "../../components/UserList";
+import {Container} from "react-bootstrap";
 
 
 export default function Users () {
 	return (
-		<div>
+		<Container>
 			<UserList/>
-		</div>
+		</Container>
 	)
 }
