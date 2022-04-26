@@ -1,9 +1,10 @@
+import {Container} from "react-bootstrap";
 
 
 export default function User () {
 	return (
-		<div>
+		<Container>
 			User
-		</div>
+		</Container>
 	)
 }

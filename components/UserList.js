@@ -3,6 +3,7 @@ import { useSelector} from "react-redux";
 import {fetchUsers} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
 import UserItem from "./UserItem";
+import Link from 'next/link';
 
 const UserList = () => {
 	const {users, error, loading} = useSelector(state => state.user)
@@ -22,7 +23,7 @@ const UserList = () => {
 
 	console.log(users)
 	return (
-		<div className='d-flex flex-row '>
+		<div className='d-flex flex-row flex-wrap'>
 			{users.map(user=>
 				<UserItem
 					key={user.id}
