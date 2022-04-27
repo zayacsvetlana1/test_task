@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
-import { useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {fetchUsers} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
 import UserItem from "./UserItem";
-import Link from 'next/link';
+import CreateUserForm from "./CreateUserForm";
 
 const UserList = () => {
-	const {users, error, loading} = useSelector(state => state.user)
+	const {users, error, loading} = useSelector(state => state.users)
 	const {fetchUsers} = useActions()
 
 
@@ -23,14 +23,19 @@ const UserList = () => {
 
 	console.log(users)
 	return (
-		<div className='d-flex flex-row flex-wrap'>
-			{users.map(user=>
-				<UserItem
-					key={user.id}
-					user={user}
-				/>
-			)}
-		</div>
+		<>
+			<CreateUserForm/>
+			<div className='d-flex flex-row flex-wrap'>
+				{users.map(user=>
+					<UserItem
+						key={user.id}
+						user={user}
+						// remove={remove}
+					/>
+				)}
+			</div>
+		</>
+
 	);
 }
 
