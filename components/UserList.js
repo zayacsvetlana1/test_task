@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
-import {fetchUsers} from "../store/action-creators/user";
+import {fetchUsers, userDeleted} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
 import UserItem from "./UserItem";
 import UserAddForm from "./UserAddForm";

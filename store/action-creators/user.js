@@ -42,7 +42,7 @@ export const userDeleted = (id) => {
 		try {
 			const response = await axios.delete (`https://reqres.in/api/users/${id}`)
 			console.log (response)
-			dispatch ({type: USER_DELETED, payload: response})
+			dispatch ({type: USER_DELETED, payload: id})
 		} catch (e) {
 			console.log (e)
 		}
