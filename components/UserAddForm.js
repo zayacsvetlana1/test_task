@@ -31,8 +31,8 @@ const UserAddForm = () => {
 					<Form.Label> Имя </Form.Label>
 					<Form.Control
 						type="text"
-						name="name"
-						id="name"
+						name="firstName"
+						id="firstName"
 						placeholder=""
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
@@ -42,8 +42,8 @@ const UserAddForm = () => {
 					<Form.Label>Фамилия</Form.Label>
 					<Form.Control
 						type="text"
-						name="lastname"
-						id="lastname"
+						name="lastName"
+						id="lastName"
 						placeholder=""
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}

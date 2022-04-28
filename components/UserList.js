@@ -1,19 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {fetchUsers, userDeleted} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
 import UserItem from "./UserItem";
 import UserAddForm from "./UserAddForm";
-import UserFilters from "./UserFilters";
+import UserFilter from "./UserFilter";
+import {useUsers} from "../hooks/useUsers";
 
 const UserList = () => {
 	const {users, error, loading} = useSelector(state => state.users)
 	const {fetchUsers, userDeleted} = useActions()
 
-
 	useEffect(() => {
 		fetchUsers()
 	}, [])
+
+
+	const [filter, setFilter] = useState({queryFirstName: '', queryLastName:'', queryEmail:''});
+	const sortedUsers = useUsers(users, filter.queryFirstName, filter.queryLastName, filter.queryEmail);
+
 
 	if (loading) {
 		return <h1>Загрузка...</h1>
@@ -32,13 +37,18 @@ const UserList = () => {
 		)
 	}
 
-	const item = renderUserList(users);
+	const item = renderUserList(sortedUsers);
 
 	console.log(users)
 	return (
 		<>
 			<UserAddForm/>
-			<UserFilters/>
+			<hr/>
+			<UserFilter
+				filter={filter}
+				setFilter={setFilter}
+			/>
+			<hr/>
 			<div className='d-flex flex-row flex-wrap'>
 				{item}
 			</div>
