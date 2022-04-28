@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import {useRouter} from "next/router";
 
-const UserItem = ({user, remove}) => {
+const UserItem = ({user}) => {
 	const router = useRouter()
 
 	return (
@@ -32,7 +32,7 @@ const UserItem = ({user, remove}) => {
 
 				<Button
 					variant="outline-danger"
-					onClick={() => remove(user)}
+					onClick={user.onDelete}
 				>
 					Удалить
 				</Button>

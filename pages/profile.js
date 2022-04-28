@@ -1,10 +1,10 @@
-
+import {Container} from "react-bootstrap";
 
 
 export default function Profile () {
 	return (
-		<div>
+		<Container>
 			Profile
-		</div>
+		</Container>
 	)
 }

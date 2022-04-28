@@ -3,11 +3,12 @@ import {useSelector} from "react-redux";
 import {fetchUsers} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
 import UserItem from "./UserItem";
-import CreateUserForm from "./CreateUserForm";
+import UserAddForm from "./UserAddForm";
+import UserFilters from "./UserFilters";
 
 const UserList = () => {
 	const {users, error, loading} = useSelector(state => state.users)
-	const {fetchUsers} = useActions()
+	const {fetchUsers, userDeleted} = useActions()
 
 
 	useEffect(() => {
@@ -21,18 +22,25 @@ const UserList = () => {
 		return <h1>{error}</h1>
 	}
 
+	const renderUserList = (arr) => {
+		if (arr.length === 0) {
+			return <h3>Пользователей пока нет</h3>
+		}
+		return arr.map(user =>
+			<UserItem
+				key={user.id} user={user} onDelete={() => userDeleted(user.id)}/>
+		)
+	}
+
+	const item = renderUserList(users);
+
 	console.log(users)
 	return (
 		<>
-			<CreateUserForm/>
+			<UserAddForm/>
+			<UserFilters/>
 			<div className='d-flex flex-row flex-wrap'>
-				{users.map(user=>
-					<UserItem
-						key={user.id}
-						user={user}
-						// remove={remove}
-					/>
-				)}
+				{item}
 			</div>
 		</>
 
