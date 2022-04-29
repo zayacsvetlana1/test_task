@@ -1,4 +1,11 @@
-import {FETCH_USERS, FETCH_USERS_ERROR, FETCH_USERS_SUCCESS, USER_CREATED, USER_DELETED} from "../../consts";
+import {
+	FETCH_ONE_USER_SUCCESS,
+	FETCH_USERS,
+	FETCH_USERS_ERROR,
+	FETCH_USERS_SUCCESS,
+	USER_CREATED,
+	USER_DELETED
+} from "../type";
 import axios from "axios";
 
 
@@ -13,6 +20,18 @@ export const fetchUsers = () => {
 				type: FETCH_USERS_ERROR,
 				payload: 'Ошибка загрузки'
 			})
+		}
+	}
+}
+
+export const fetchOneUser = (id) => {
+	return async (dispatch) => {
+		try {
+			// dispatch ({type: FETCH_USERS})
+			const response = await axios.get (`https://reqres.in/api/users/${id}`)
+			dispatch ({type: FETCH_ONE_USER_SUCCESS, payload: response.data.data})
+		} catch (e) {
+			console.log (e)
 		}
 	}
 }

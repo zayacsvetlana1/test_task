@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Card, Form} from "react-bootstrap";
+import React from 'react';
+import { Form} from "react-bootstrap";
 
 const UserFilter = ({filter, setFilter}) => {
 

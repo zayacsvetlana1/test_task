@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import {fetchUsers, userDeleted} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
 import UserItem from "./UserItem";
 import UserAddForm from "./UserAddForm";
@@ -9,6 +8,7 @@ import {useUsers} from "../hooks/useUsers";
 
 const UserList = () => {
 	const {users, error, loading} = useSelector(state => state.users)
+
 	const {fetchUsers, userDeleted} = useActions()
 
 	useEffect(() => {

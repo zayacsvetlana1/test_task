@@ -26,7 +26,7 @@ const UserAddForm = () => {
 
 	return (
 		<>
-			<Form onSubmit={onSubmitHandler}>
+			<Form className="mx-3" onSubmit={onSubmitHandler}>
 				<Form.Group className="mb-1">
 					<Form.Label> Имя </Form.Label>
 					<Form.Control

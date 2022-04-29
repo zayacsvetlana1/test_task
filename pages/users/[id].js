@@ -7,15 +7,25 @@ import {useActions} from "../../hooks/useActions";
 
 
 export default function User () {
-	const router = useRouter()
 
+	const {user} = useSelector(state => state.users)
+	console.log(user)
+
+	const router = useRouter()
+	console.log(router.query.id)
+	const id = router.query.id
+
+	const {fetchOneUser} = useActions()
+
+	useEffect(() => {
+		fetchOneUser(id)
+	}, [])
 
 
 	return (
 		<Container>
-
-
-			id {router.query.id}
+			{/*{user}*/}
+			id {id}
 		</Container>
 	)
 }
