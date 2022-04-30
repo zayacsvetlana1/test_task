@@ -12,9 +12,15 @@ export const Auth = (email, password) => (dispatch) => {
 			// return Promise.resolve();
 		},
 		(error) => {
+			const message =
+				(error.response &&
+					error.response.data &&
+					error.response.data.message) ||
+				error.message ||
+				error.toString();
 			dispatch ({
 				type: LOGIN_FAIL,
-				payload: {error}
+				payload: message
 			});
 			// return Promise.reject();
 		}

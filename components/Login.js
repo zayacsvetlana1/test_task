@@ -1,5 +1,5 @@
 import {Button, Card, Container, Form} from "react-bootstrap";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useActions} from "../hooks/useActions";
 import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
@@ -13,9 +13,9 @@ export default function Login() {
 	const [email, setEmail] = useState ('')
 	const [password, setPassword] = useState ('')
 
-	const {token, isLoggedIn} = useSelector (state => state.auth)
+	const {token, isLoggedIn, errorMessage} = useSelector (state => state.auth)
 	console.log(token)
-	console.log(isLoggedIn)
+	// console.log(isLoggedIn)
 
 
 	const handleLogin = (e) => {
@@ -27,8 +27,12 @@ export default function Login() {
 		// }
 	}
 
-	if (isLoggedIn) {
-		router.push ("/profile")
+	if (token) {
+		router.push("/profile")
+	}
+
+	if (errorMessage) {
+		return <h1> {errorMessage} </h1>
 	}
 
 	return (

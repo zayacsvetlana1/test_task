@@ -19,6 +19,11 @@ const UserList = () => {
 	const [filter, setFilter] = useState({queryFirstName: '', queryLastName:'', queryEmail:''});
 	const sortedUsers = useUsers(users, filter.queryFirstName, filter.queryLastName, filter.queryEmail);
 
+	// typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : null
+
+	// localStorage.setItem('queryLastName',filter.queryLastName)
+	// localStorage.setItem('queryEmail',queryEmail)
+
 
 	if (loading) {
 		return <h1>Загрузка...</h1>

@@ -1,15 +1,12 @@
 import {Container} from "react-bootstrap";
-import {useSelector} from "react-redux";
+import Profile from "../components/Profile";
 
 
-export default function Profile () {
-
-	// const {user} = useSelector(state => state.auth)
-
+export default function ProfilePage () {
 
 	return (
 		<Container>
-			Profile
+			<Profile/>
 		</Container>
 	)
 }
