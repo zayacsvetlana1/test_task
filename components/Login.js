@@ -2,25 +2,33 @@ import {Button, Card, Container, Form} from "react-bootstrap";
 import {useState} from "react";
 import {useActions} from "../hooks/useActions";
 import {useRouter} from "next/router";
+import {useSelector} from "react-redux";
 
 
-export default function Login () {
+export default function Login() {
 
-	const {login} = useActions()
-	const router = useRouter()
+	const {Auth} = useActions ()
+	const router = useRouter ()
 
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+	const [email, setEmail] = useState ('')
+	const [password, setPassword] = useState ('')
 
-	const isLogin = login (email, password)
+	const {token, isLoggedIn} = useSelector (state => state.auth)
+	console.log(token)
+	console.log(isLoggedIn)
+
 
 	const handleLogin = (e) => {
 		e.preventDefault ();
-		console.log('login with ', { email, password });
+		console.log ('login with ', {email, password});
+		Auth (email, password);
+		// if (isLoggedIn) {
+		// 	router.push ("/profile")
+		// }
+	}
 
-		if (isLogin) {
-			router.push("/profile")
-		}
+	if (isLoggedIn) {
+		router.push ("/profile")
 	}
 
 	return (
@@ -33,7 +41,7 @@ export default function Login () {
 							type="email"
 							placeholder='Введите ваш e-mail...'
 							value={email}
-							onChange={e => setEmail(e.target.value)}
+							onChange={e => setEmail (e.target.value)}
 						/>
 					</Form.Group>
 
@@ -43,7 +51,7 @@ export default function Login () {
 							type="password"
 							placeholder='Введите ваш пароль...'
 							value={password}
-							onChange={e => setPassword(e.target.value)}
+							onChange={e => setPassword (e.target.value)}
 						/>
 					</Form.Group>
 					<Button variant="primary" type="submit">

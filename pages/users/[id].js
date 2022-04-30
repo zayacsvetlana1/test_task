@@ -1,31 +1,40 @@
 import {Container} from "react-bootstrap";
 import React, {useEffect} from "react";
-import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
-import {useActions} from "../../hooks/useActions";
+import {fetchUsers} from "../../store/action-creators/user";
+import {useRouter} from "next/router";
 
 
 
-export default function User () {
+const User = () => {
 
-	const {user} = useSelector(state => state.users)
-	console.log(user)
+	const {users} = useSelector(state => state.users)
+	useEffect(() => {
+		fetchUsers()
+	}, [])
+
+	User.getInitialProps = ({query}) => {
+		return {
+			user: users[query.id]
+		}
+	}
+
 
 	const router = useRouter()
 	console.log(router.query.id)
 	const id = router.query.id
+	//
+	// const {fetchOneUser} = useActions()
+	//
 
-	const {fetchOneUser} = useActions()
-
-	useEffect(() => {
-		fetchOneUser(id)
-	}, [])
 
 
 	return (
 		<Container>
-			{/*{user}*/}
+
 			id {id}
 		</Container>
 	)
 }
+
+export default User

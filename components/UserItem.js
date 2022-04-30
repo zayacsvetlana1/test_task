@@ -13,8 +13,8 @@ const UserItem = ({user, onDelete}) => {
 				<div
 					onClick={() => {
 						router.push({
-							pathname: '/users/[uid]',
-							query: {uid: user.id},
+							pathname: '/users/[id]',
+							query: {id: user.id},
 						})
 					}}
 				>

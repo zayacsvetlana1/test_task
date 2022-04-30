@@ -1,18 +1,30 @@
-import {LOGIN_FAIL, LOGIN_SUCCESS} from "../type";
+import {LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT} from "../type";
+import AuthService from "../../services/authService"
 
 
-export const login = (email, password) => () => {
-	return (dispatch)  => {
-		try {
-			dispatch({
+export const Auth = (email, password) => (dispatch) => {
+	return AuthService.login(email, password).then(
+		(data) => {
+			dispatch ({
 				type: LOGIN_SUCCESS,
-				payload: { user: {email, password} }
+				payload: {data}
 			});
-		} catch (e) {
+			// return Promise.resolve();
+		},
+		(error) => {
 			dispatch ({
 				type: LOGIN_FAIL,
-				payload: 'Имя пользователя или пароль введены не верно'
-			})
+				payload: {error}
+			});
+			// return Promise.reject();
 		}
-	}
+	)
 };
+
+export const Log_Out = () => (dispatch) => {
+	AuthService.logout();
+	dispatch({
+		type: LOGOUT,
+	});
+};
+
