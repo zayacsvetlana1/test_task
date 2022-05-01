@@ -1,24 +1,43 @@
 import {Card, Container} from "react-bootstrap";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {fetchOneUser, fetchUsers} from "../../store/action-creators/user";
 import {useRouter} from "next/router";
 import {useActions} from "../../hooks/useActions";
+import axios from "axios";
 
 
 
-const User = () => {
+const User = ({user: initialUser}) => {
+
+	const [user, setUser] = useState(initialUser)
 	const router = useRouter()
-	console.log(router.query.id)
-	const {id} = router.query
-
-	const {user} = useSelector(state => state.users)
-	const {fetchOneUser} = useActions()
 
 	useEffect(() => {
-		fetchOneUser(id)
-	}, [])
-	console.log(user)
+		async function loadUser() {
+			const response = await axios.get (`https://reqres.in/api/users/${router.query.id}`)
+			const userData = await response.data.data
+			setUser(userData)
+		}
+		if (!initialUser) {
+			loadUser()
+		}
+	},[])
+
+	if (!user) {
+		return  <p>Идет загрузка...</p>
+	}
+
+	// const router = useRouter()
+	// const id = router.query.id
+	//
+	// const {user} = useSelector(state => state.users)
+	// const {fetchOneUser} = useActions()
+	//
+	// useEffect(() => {
+	// 	fetchOneUser(id)
+	//
+	// }, [])
 
 	return (
 		<Container>
@@ -35,7 +54,7 @@ const User = () => {
 				</Card.Body>
 			</Card>
 
-			id {id}
+			{/*id {user.id}*/}
 		</Container>
 	)
 }
