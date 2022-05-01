@@ -1,8 +1,18 @@
 import React from 'react';
-import { Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 
 const UserFilter = ({filter, setFilter}) => {
 
+	typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : ''
+	typeof window!== 'undefined' ? 	localStorage.setItem('queryLastName',filter.queryLastName) : ''
+	typeof window!== 'undefined' ? 	localStorage.setItem('queryEmail',filter.queryEmail) : ''
+
+	const onClear = () => {
+		setFilter({queryFirstName: '', queryLastName: '',queryEmail:''})
+		localStorage.removeItem("queryFirstName")
+		localStorage.removeItem("queryLastName")
+		localStorage.removeItem("queryEmail")
+	}
 
 	return (
 		<Form className='mt-3'>
@@ -43,6 +53,15 @@ const UserFilter = ({filter, setFilter}) => {
 						/>
 					</Form.Group>
 				</div>
+
+				<Button
+					onClick={onClear}
+					className='mx-3'
+					variant='outline-danger'
+				>
+					Очистить
+				</Button>
+
 			</Form.Group>
 		</Form>
 	);

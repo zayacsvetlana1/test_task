@@ -16,13 +16,19 @@ const UserList = () => {
 	}, [])
 
 
-	const [filter, setFilter] = useState({queryFirstName: '', queryLastName:'', queryEmail:''});
+
+
+	const [filter, setFilter] = useState({
+		// queryFirstName: '',
+		// queryLastName:'',
+		// queryEmail:'',
+
+		queryFirstName: typeof window!== 'undefined' ? localStorage.getItem('queryFirstName') : '',
+		queryLastName: typeof window!== 'undefined' ? localStorage.getItem('queryLastName') : '',
+		queryEmail: typeof window!== 'undefined' ? localStorage.getItem('queryEmail') : ''
+	});
 	const sortedUsers = useUsers(users, filter.queryFirstName, filter.queryLastName, filter.queryEmail);
 
-	// typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : null
-
-	// localStorage.setItem('queryLastName',filter.queryLastName)
-	// localStorage.setItem('queryEmail',queryEmail)
 
 
 	if (loading) {
