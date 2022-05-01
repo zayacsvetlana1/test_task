@@ -14,7 +14,7 @@ export default function Login() {
 	const [password, setPassword] = useState ('')
 
 	const {token, errorMessage} = useSelector (state => state.auth)
-	console.log(token)
+	console.log (token)
 
 
 	const handleLogin = (e) => {
@@ -27,7 +27,7 @@ export default function Login() {
 	}
 
 	if (token) {
-		router.push("/profile")
+		router.push ("/profile")
 	}
 
 	if (errorMessage) {

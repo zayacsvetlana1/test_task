@@ -1,6 +1,6 @@
 import NavbarTop from "../components/NavbarTop";
 
-export default function Layout({ children }) {
+export default function Layout({children}) {
 	return (
 		<>
 			<NavbarTop/>

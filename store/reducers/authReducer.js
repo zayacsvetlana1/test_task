@@ -1,8 +1,8 @@
 import {LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT} from "../type";
 
 const initialState = {
-	token: typeof window!== 'undefined' ?
-			localStorage.getItem ('token') : '' ,
+	token: typeof window !== 'undefined' ?
+		localStorage.getItem ('token') : '',
 	// isLoggedIn: false,
 	errorMessage: null
 }
@@ -11,15 +11,20 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGIN_SUCCESS:
-			return {token: action.payload,
+			return {
+				token: action.payload,
 				// isLoggedIn: true,
-				errorMessage: null}
+				errorMessage: null
+			}
 		case LOGIN_FAIL:
-			return {token: '',
+			return {
+				token: '',
 				// isLoggedIn: false,
-				errorMessage: action.payload}
+				errorMessage: action.payload
+			}
 		case LOGOUT:
-			return {...state,
+			return {
+				...state,
 				// isLoggedIn: false,
 				token: ''
 			}

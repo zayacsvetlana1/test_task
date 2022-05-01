@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 const Profile = () => {
 	const router = useRouter ()
 
-	const {token} = useSelector(state => state.auth)
+	const {token} = useSelector (state => state.auth)
 
 	if (token == null) {
 		router.push ("/login")

@@ -3,10 +3,10 @@ import {Button, Form} from "react-bootstrap";
 
 const UserFilter = ({filter, setFilter}) => {
 
-	if (filter !=='' && typeof window!== 'undefined') {
-		localStorage.setItem('queryFirstName',filter.queryFirstName)
-		localStorage.setItem('queryLastName',filter.queryLastName)
-		localStorage.setItem('queryEmail',filter.queryEmail)
+	if (filter !== '' && typeof window !== 'undefined') {
+		localStorage.setItem ('queryFirstName', filter.queryFirstName)
+		localStorage.setItem ('queryLastName', filter.queryLastName)
+		localStorage.setItem ('queryEmail', filter.queryEmail)
 	}
 
 	// typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : ''
@@ -14,10 +14,10 @@ const UserFilter = ({filter, setFilter}) => {
 	// typeof window!== 'undefined' ? 	localStorage.setItem('queryEmail',filter.queryEmail) : ''
 
 	const onClear = () => {
-		setFilter({queryFirstName: '', queryLastName: '',queryEmail:''})
-		localStorage.removeItem("queryFirstName")
-		localStorage.removeItem("queryLastName")
-		localStorage.removeItem("queryEmail")
+		setFilter ({queryFirstName: '', queryLastName: '', queryEmail: ''})
+		localStorage.removeItem ("queryFirstName")
+		localStorage.removeItem ("queryLastName")
+		localStorage.removeItem ("queryEmail")
 	}
 
 	return (
@@ -33,7 +33,7 @@ const UserFilter = ({filter, setFilter}) => {
 							name="firstName"
 							placeholder='Поиск...'
 							value={filter.queryFirstName}
-							onChange={e => setFilter({...filter, queryFirstName: e.target.value})}
+							onChange={e => setFilter ({...filter, queryFirstName: e.target.value})}
 						/>
 					</Form.Group>
 
@@ -44,7 +44,7 @@ const UserFilter = ({filter, setFilter}) => {
 							name="lastName"
 							placeholder='Поиск...'
 							value={filter.queryLastName}
-							onChange={e => setFilter({...filter, queryLastName: e.target.value})}
+							onChange={e => setFilter ({...filter, queryLastName: e.target.value})}
 						/>
 					</Form.Group>
 
@@ -55,7 +55,7 @@ const UserFilter = ({filter, setFilter}) => {
 							name="mail"
 							placeholder='Поиск...'
 							value={filter.queryEmail}
-							onChange={e => setFilter({...filter, queryEmail: e.target.value})}
+							onChange={e => setFilter ({...filter, queryEmail: e.target.value})}
 						/>
 					</Form.Group>
 				</div>

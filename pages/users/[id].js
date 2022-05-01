@@ -7,25 +7,25 @@ import {useActions} from "../../hooks/useActions";
 import axios from "axios";
 
 
-
 const User = ({user: initialUser}) => {
 
-	const [user, setUser] = useState(initialUser)
-	const router = useRouter()
+	const [user, setUser] = useState (initialUser)
+	const router = useRouter ()
 
-	useEffect(() => {
+	useEffect (() => {
 		async function loadUser() {
 			const response = await axios.get (`https://reqres.in/api/users/${router.query.id}`)
 			const userData = await response.data.data
-			setUser(userData)
+			setUser (userData)
 		}
+
 		if (!initialUser) {
-			loadUser()
+			loadUser ()
 		}
-	},[])
+	}, [])
 
 	if (!user) {
-		return  <p>Идет загрузка...</p>
+		return <p>Идет загрузка...</p>
 	}
 
 	// const router = useRouter()
@@ -43,11 +43,11 @@ const User = ({user: initialUser}) => {
 		<Container>
 			<Card
 				className='m-3'
-				style={{ width: '25rem' }}
+				style={{width: '25rem'}}
 			>
 				<Card.Header> Пользователь </Card.Header>
 				<Card.Body>
-					<Card.Img className='mb-4' variant="top" src={user.avatar} />
+					<Card.Img className='mb-4' variant="top" src={user.avatar}/>
 					<Card.Title>{user.first_name}</Card.Title>
 					<Card.Title>{user.last_name}</Card.Title>
 					<Card.Subtitle className="mb-2 text-muted">{user.email}</Card.Subtitle>

@@ -9,7 +9,7 @@ const Logout = () => {
 	const handleLogout = (e) => {
 		e.preventDefault ();
 		console.log ('logout');
-		Log_Out();
+		Log_Out ();
 	}
 	return (
 		<Button onClick={handleLogout}>

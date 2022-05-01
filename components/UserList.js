@@ -7,28 +7,25 @@ import UserFilter from "./UserFilter";
 import {useUsers} from "../hooks/useUsers";
 
 const UserList = () => {
-	const {users, error, loading} = useSelector(state => state.users)
+	const {users, error, loading} = useSelector (state => state.users)
 
-	const {fetchUsers, userDeleted} = useActions()
+	const {fetchUsers, userDeleted} = useActions ()
 
-	useEffect(() => {
-		fetchUsers()
+	useEffect (() => {
+		fetchUsers ()
 	}, [])
 
 
-
-
-	const [filter, setFilter] = useState({
+	const [filter, setFilter] = useState ({
 		// queryFirstName: '',
 		// queryLastName:'',
 		// queryEmail:'',
 
-		queryFirstName: typeof window!== 'undefined' ? localStorage.getItem('queryFirstName') : '',
-		queryLastName: typeof window!== 'undefined' ? localStorage.getItem('queryLastName') : '',
-		queryEmail: typeof window!== 'undefined' ? localStorage.getItem('queryEmail') : ''
+		queryFirstName: typeof window !== 'undefined' ? localStorage.getItem ('queryFirstName') : '',
+		queryLastName: typeof window !== 'undefined' ? localStorage.getItem ('queryLastName') : '',
+		queryEmail: typeof window !== 'undefined' ? localStorage.getItem ('queryEmail') : ''
 	});
-	const sortedUsers = useUsers(users, filter.queryFirstName, filter.queryLastName, filter.queryEmail);
-
+	const sortedUsers = useUsers (users, filter.queryFirstName, filter.queryLastName, filter.queryEmail);
 
 
 	if (loading) {
@@ -42,15 +39,15 @@ const UserList = () => {
 		if (arr.length === 0) {
 			return <h3>Пользователей пока нет</h3>
 		}
-		return arr.map(user =>
+		return arr.map (user =>
 			<UserItem
-				key={user.id} user={user} onDelete={() => userDeleted(user.id)}/>
+				key={user.id} user={user} onDelete={() => userDeleted (user.id)}/>
 		)
 	}
 
-	const item = renderUserList(sortedUsers);
+	const item = renderUserList (sortedUsers);
 
-	console.log(users)
+	console.log (users)
 	return (
 		<>
 			<UserAddForm/>

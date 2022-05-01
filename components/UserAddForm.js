@@ -3,11 +3,11 @@ import {Button, Form} from "react-bootstrap";
 import {useActions} from "../hooks/useActions";
 
 const UserAddForm = () => {
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [email, setEmail] = useState('');
+	const [firstName, setFirstName] = useState ('');
+	const [lastName, setLastName] = useState ('');
+	const [email, setEmail] = useState ('');
 
-	const {userCreated} = useActions()
+	const {userCreated} = useActions ()
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault ();
@@ -17,11 +17,11 @@ const UserAddForm = () => {
 			email: email,
 			avatar: '',
 		}
-		userCreated(newUser)
+		userCreated (newUser)
 
-		setFirstName('');
-		setLastName('');
-		setEmail('');
+		setFirstName ('');
+		setLastName ('');
+		setEmail ('');
 	}
 
 	return (
@@ -35,7 +35,7 @@ const UserAddForm = () => {
 						id="firstName"
 						placeholder=""
 						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
+						onChange={(e) => setFirstName (e.target.value)}
 					/>
 				</Form.Group>
 				<Form.Group className="mb-1">
@@ -46,7 +46,7 @@ const UserAddForm = () => {
 						id="lastName"
 						placeholder=""
 						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
+						onChange={(e) => setLastName (e.target.value)}
 					/>
 				</Form.Group>
 				<Form.Group className="mb-1">
@@ -57,7 +57,7 @@ const UserAddForm = () => {
 						id="mail"
 						placeholder="name@example.com"
 						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={(e) => setEmail (e.target.value)}
 					/>
 				</Form.Group>
 				<Button type='submit' className='mt-2' variant='outline-success'>Добавить пользователя</Button>

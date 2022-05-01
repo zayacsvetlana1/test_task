@@ -7,8 +7,6 @@ const NavbarTop = () => {
 
 	const {token} = useSelector (state => state.auth)
 
-
-
 	return (
 		<Navbar bg="light" variant="light">
 			<Container>
@@ -17,7 +15,7 @@ const NavbarTop = () => {
 					<Nav.Link href="/">На главную</Nav.Link>
 					<Nav.Link href="/users">Пользователи</Nav.Link>
 					<Nav.Link href="/profile">Профиль</Nav.Link>
-					{token ?  <Logout/> : <Nav.Link href="/login">Войти</Nav.Link>}
+					{token ? <Logout/> : <Nav.Link href="/login">Войти</Nav.Link>}
 				</Nav>
 			</Container>
 		</Navbar>

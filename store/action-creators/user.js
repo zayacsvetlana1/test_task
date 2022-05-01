@@ -29,12 +29,14 @@ export const fetchOneUser = (id) => {
 		try {
 			const response = await axios.get (`https://reqres.in/api/users/${id}`)
 			const user = await response.data.data
-			dispatch ({type: FETCH_ONE_USER_SUCCESS, payload: {
+			dispatch ({
+				type: FETCH_ONE_USER_SUCCESS, payload: {
 					first_name: user.first_name,
 					last_name: user.last_name,
 					email: user.email,
 					avatar: user.avatar
-				}})
+				}
+			})
 		} catch (e) {
 			console.log (e)
 		}

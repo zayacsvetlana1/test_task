@@ -3,7 +3,7 @@ import AuthService from "../../services/authService"
 
 
 export const Auth = (email, password) => (dispatch) => {
-	return AuthService.login(email, password).then(
+	return AuthService.login (email, password).then (
 		(data) => {
 			dispatch ({
 				type: LOGIN_SUCCESS,
@@ -17,7 +17,7 @@ export const Auth = (email, password) => (dispatch) => {
 					error.response.data &&
 					error.response.data.message) ||
 				error.message ||
-				error.toString();
+				error.toString ();
 			dispatch ({
 				type: LOGIN_FAIL,
 				payload: message
@@ -28,8 +28,8 @@ export const Auth = (email, password) => (dispatch) => {
 };
 
 export const Log_Out = () => (dispatch) => {
-	AuthService.logout();
-	dispatch({
+	AuthService.logout ();
+	dispatch ({
 		type: LOGOUT,
 	});
 };
