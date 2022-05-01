@@ -3,9 +3,15 @@ import {Button, Form} from "react-bootstrap";
 
 const UserFilter = ({filter, setFilter}) => {
 
-	typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : ''
-	typeof window!== 'undefined' ? 	localStorage.setItem('queryLastName',filter.queryLastName) : ''
-	typeof window!== 'undefined' ? 	localStorage.setItem('queryEmail',filter.queryEmail) : ''
+	if (filter !=='' && typeof window!== 'undefined') {
+		localStorage.setItem('queryFirstName',filter.queryFirstName)
+		localStorage.setItem('queryLastName',filter.queryLastName)
+		localStorage.setItem('queryEmail',filter.queryEmail)
+	}
+
+	// typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : ''
+	// typeof window!== 'undefined' ? 	localStorage.setItem('queryLastName',filter.queryLastName) : ''
+	// typeof window!== 'undefined' ? 	localStorage.setItem('queryEmail',filter.queryEmail) : ''
 
 	const onClear = () => {
 		setFilter({queryFirstName: '', queryLastName: '',queryEmail:''})
