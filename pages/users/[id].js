@@ -1,9 +1,6 @@
 import {Card, Container} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
-import {fetchOneUser, fetchUsers} from "../../store/action-creators/user";
 import {useRouter} from "next/router";
-import {useActions} from "../../hooks/useActions";
 import axios from "axios";
 
 
@@ -28,17 +25,6 @@ const User = ({user: initialUser}) => {
 		return <p>Идет загрузка...</p>
 	}
 
-	// const router = useRouter()
-	// const id = router.query.id
-	//
-	// const {user} = useSelector(state => state.users)
-	// const {fetchOneUser} = useActions()
-	//
-	// useEffect(() => {
-	// 	fetchOneUser(id)
-	//
-	// }, [])
-
 	return (
 		<Container>
 			<Card
@@ -54,7 +40,6 @@ const User = ({user: initialUser}) => {
 				</Card.Body>
 			</Card>
 
-			{/*id {user.id}*/}
 		</Container>
 	)
 }

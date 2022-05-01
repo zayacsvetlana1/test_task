@@ -21,9 +21,6 @@ export default function Login() {
 		e.preventDefault ();
 		console.log ('login with ', {email, password});
 		Auth (email, password);
-		// if (isLoggedIn) {
-		// 	router.push ("/profile")
-		// }
 	}
 
 	if (token) {

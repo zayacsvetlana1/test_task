@@ -9,10 +9,6 @@ const UserFilter = ({filter, setFilter}) => {
 		localStorage.setItem ('queryEmail', filter.queryEmail)
 	}
 
-	// typeof window!== 'undefined' ? 	localStorage.setItem('queryFirstName',filter.queryFirstName) : ''
-	// typeof window!== 'undefined' ? 	localStorage.setItem('queryLastName',filter.queryLastName) : ''
-	// typeof window!== 'undefined' ? 	localStorage.setItem('queryEmail',filter.queryEmail) : ''
-
 	const onClear = () => {
 		setFilter ({queryFirstName: '', queryLastName: '', queryEmail: ''})
 		localStorage.removeItem ("queryFirstName")

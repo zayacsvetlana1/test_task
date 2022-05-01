@@ -15,11 +15,7 @@ const UserList = () => {
 		fetchUsers ()
 	}, [])
 
-
 	const [filter, setFilter] = useState ({
-		// queryFirstName: '',
-		// queryLastName:'',
-		// queryEmail:'',
 
 		queryFirstName: typeof window !== 'undefined' ? localStorage.getItem ('queryFirstName') : '',
 		queryLastName: typeof window !== 'undefined' ? localStorage.getItem ('queryLastName') : '',
