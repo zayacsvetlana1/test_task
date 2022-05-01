@@ -3,17 +3,13 @@ import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
 
 const Profile = () => {
-	// const router = useRouter ()
-	//
-	// const {isLoggedIn, token} = useSelector(state => state.auth)
+	const router = useRouter ()
 
-	// useEffect(() => {
-	// 	if (!token) {
-	// 		router.push("/login")
-	// 	} else {
-	//
-	// 	}
-	// },[])
+	const {token} = useSelector(state => state.auth)
+
+	if (token == null) {
+		router.push ("/login")
+	}
 
 	return (
 		<div>

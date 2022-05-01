@@ -13,9 +13,8 @@ export default function Login() {
 	const [email, setEmail] = useState ('')
 	const [password, setPassword] = useState ('')
 
-	const {token, isLoggedIn, errorMessage} = useSelector (state => state.auth)
+	const {token, errorMessage} = useSelector (state => state.auth)
 	console.log(token)
-	// console.log(isLoggedIn)
 
 
 	const handleLogin = (e) => {
