@@ -9,7 +9,6 @@ export const Auth = (email, password) => (dispatch) => {
 				type: LOGIN_SUCCESS,
 				payload: {data}
 			});
-			// return Promise.resolve();
 		},
 		(error) => {
 			const message =
@@ -22,7 +21,6 @@ export const Auth = (email, password) => (dispatch) => {
 				type: LOGIN_FAIL,
 				payload: message
 			});
-			// return Promise.reject();
 		}
 	)
 };
