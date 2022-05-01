@@ -1,15 +1,42 @@
 # Next.js with react-bootstrap example
 
-This example shows how to use Next.js along with [react-bootstrap](https://react-bootstrap.github.io/).
+## Тестовое задание
 
-## Deploy your own
+#### С использованием библиотеки React реализовать приложение (плюсом будет использование Next.js, а также TypeScript), которое умеет показывать следующие страницы:
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or
-preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-react-bootstrap)
+- / - главная
+- /login - страница ввода логина и пароля
+- /users - страница с пользователями
+- /users/:id - страница конкретного пользователя
+- /profile - страница с произвольным текстом, недоступная без авторизации
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-react-bootstrap&project-name=with-react-bootstrap&repository-name=with-react-bootstrap)
+#### На сайте, в шапке или подвале реализовать ссылки:
 
-## How to use
+- На главную (/)
+- Пользователи (/users)
+- Профиль (/profile)
+
+Если пользователь попадает на страницу /profile и он не авторизован - перекидывать на страницу /login. Форма входа (
+/login) состоит их двух полей email и password. Для авторизации используем POST https://reqres.in/api/login. В случае
+успешного ответа от сервера, перебрасываем на страницу /profile, в противном выводить error, который пришел в ответе.
+Информация об авторизации пользователя должна сохраняться при перезагрузке страницы.
+
+Страница /users содержит список пользователей. Первоначальный список пользователей получаем
+GET https://reqres.in/api/users. Все остальные действия с пользователями (добавление, удаление, фильтрация) реализуем
+через глобальный/локальный стейт.
+
+#### На странице необходимо реализовать возможность:
+
+- добавления и удаления пользователей
+- переходы на конкретные страницы пользователей /users/:id
+- форму для фильтрации пользователей по email/first_name/last_name, выбор фильтров должен сохраняться при перезагрузке
+  страницы Запрос за пользователями, попытку залогиниться и все что посчитаете нужным - пробросить через Redux.
+
+Оформление (дизайн) — не важно.
+
+Код оформить на GitHub.
+
+### How to use
 
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
 with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the
