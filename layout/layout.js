@@ -1,4 +1,4 @@
-import NavbarTop from "../components/NavbarTop";
+import NavbarTop from "../components/Navbar/NavbarTop";
 
 export default function Layout({children}) {
 	return (
