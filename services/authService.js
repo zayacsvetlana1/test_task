@@ -2,7 +2,7 @@ import axios from "axios";
 
 const login = (email, password) => {
 	return axios
-		.post ('https://reqres.in/api/login', {
+		.post (`${process.env.API_URL}/login`, {
 			email: email,
 			password: password,
 		})

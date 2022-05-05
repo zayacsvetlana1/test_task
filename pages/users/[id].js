@@ -11,7 +11,7 @@ const User = ({user: initialUser}) => {
 
 	useEffect (() => {
 		async function loadUser() {
-			const response = await axios.get (`https://reqres.in/api/users/${router.query.id}`)
+			const response = await axios.get (`${process.env.API_URL}/users/${router.query.id}`)
 			const userData = await response.data.data
 			setUser (userData)
 		}
