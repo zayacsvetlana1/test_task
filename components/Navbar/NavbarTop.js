@@ -15,7 +15,6 @@ const NavbarTop = () => {
 		setIsAuth (auth)
 	}, [token])
 
-
 	return (
 		<Navbar bg="light" variant="light">
 			<Container>
